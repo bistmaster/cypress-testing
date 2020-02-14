@@ -1,13 +1,15 @@
-describe('Company Information', () => {
+describe("Captain Dashboard - Company Information", () => {
   before(() => {
-    cy.login('jdeere@yopmail.com', 'Tester123!')
-  })
+    // Captain User
+    cy.login("jdeere@yopmail.com", "Tester123!");
+  });
 
-  it('Click on the navigation link', () => {
-    cy.verifyNameAndUrl('Company Information', '/company-information')
-  })
+  it("Click on the navigation link", () => {
+    cy.get("#preloader-jpmcc").should("not.be.visible");
+    cy.verifyNameAndUrl("Company Information", "/company-information");
+  });
 
   after(() => {
-    cy.logout()
-  })
-})
+    cy.logout();
+  });
+});

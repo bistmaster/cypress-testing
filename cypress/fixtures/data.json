@@ -1,0 +1,44 @@
+{
+  "navigations": {
+    "captainDashboard": [
+      {
+        "name": "Company Information",
+        "url": "company-information"
+      },
+      {
+        "name": "Hospitality",
+        "url": "hospitality/catalogue"
+      },
+      {
+        "name": "Purchase History",
+        "url": "purchase-history"
+      },
+      {
+        "name": "Team Roster",
+        "url": "team-roster"
+      }
+    ],
+    "events": [
+      {
+        "name": "Events",
+        "url": "dashboard/events"
+      },
+      {
+        "name": "Companies",
+        "url": "dashboard/companies"
+      },
+      {
+        "name": "Participants",
+        "url": "dashboard/participants"
+      },
+      {
+        "name": "Hospitality",
+        "url": "dashboard/hospitality/products"
+      },
+      {
+        "name": "Users",
+        "url": "dashboard/users"
+      }
+    ]
+  }
+}
