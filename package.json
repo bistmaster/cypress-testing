@@ -19,5 +19,8 @@
   "homepage": "https://github.com/SweatWorks/EMPOWER-Automation#readme",
   "devDependencies": {
     "cypress": "^4.0.1"
+  },
+  "dependencies": {
+    "faker": "^4.1.0"
   }
 }

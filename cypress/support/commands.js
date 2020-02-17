@@ -11,32 +11,46 @@
 //
 // -- This is a parent command --
 
-Cypress.Commands.add('login', (email, password) => {
-  cy.visit('https://qa.jpmcc-sw.com/login')
-  cy.wait(500)
+let LOCAL_STORAGE_MEMORY = {};
 
-  cy.server()
-  cy.route('POST', 'https://qa.jpmcc-sw.com/qa/auth/login').as('login')
-  cy.get('[id=email]').type(email)
-  cy.get('[id=password]').type(password)
-  cy.get('button[type=submit]').click()
-  cy.wait('@login')
-  cy.get('@login').then(response => {
-    expect(response.status).to.eq(200)
-    expect(response.method).to.eq('POST')
-    expect(response.responseBody).to.have.property('success')
-    expect(response.responseBody).to.have.property('data')
-    expect(response.responseBody.data).to.have.property('accessToken')
-    expect(response.responseBody.data).to.have.property('refreshToken')
-  })
-})
+Cypress.Commands.add("saveLocalStorageCache", () => {
+  Object.keys(localStorage).forEach(key => {
+    LOCAL_STORAGE_MEMORY[key] = localStorage[key];
+  });
+});
 
-Cypress.Commands.add('logout', () => {
-  cy.get('button.account-container__button').click()
-  cy.contains('button', 'Logout')
-})
+Cypress.Commands.add("restoreLocalStorageCache", () => {
+  Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
+    localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
+  });
+});
 
-Cypress.Commands.add('verifyNameAndUrl', (name, url) => {
-  cy.contains('span', name).click()
-  cy.url().should('include', url)
-})
+Cypress.Commands.add("login", (email, password) => {
+  cy.visit("https://dev.jpmcc-sw.com/login");
+  cy.wait(500);
+
+  cy.server();
+  cy.route("POST", "https://dev.jpmcc-sw.com/dev/auth/login").as("login");
+  cy.get("[id=email]").type(email);
+  cy.get("[id=password]").type(password);
+  cy.get("button[type=submit]").click();
+  cy.wait("@login");
+  cy.get("@login").then(response => {
+    expect(response.status).to.eq(200);
+    expect(response.method).to.eq("POST");
+    expect(response.responseBody).to.have.property("success");
+    expect(response.responseBody).to.have.property("data");
+    expect(response.responseBody.data).to.have.property("accessToken");
+    expect(response.responseBody.data).to.have.property("refreshToken");
+  });
+});
+
+Cypress.Commands.add("logout", () => {
+  cy.get("button.account-container__button").click();
+  cy.contains("button", "Logout");
+});
+
+Cypress.Commands.add("verifyNameAndUrl", (name, url) => {
+  cy.contains("span", name).click();
+  cy.url().should("include", url);
+});
