@@ -20,14 +20,14 @@ describe("Series Admin Dashboard - Hospitality", () => {
     cy.contains("span.tab--light-grey", "Products").click();
     cy.get("tr.MuiTableRow-root").should("have.length.above", 1);
     cy.contains("span.list__header__text", "CATEGORy").click();
-    console.log(cy.get("tr td").first());
+    cy.get("tbody>tr").eq(0);
   });
 
-  it("Check Packages", () => {
-    cy.get("div.main-loader").should("not.be.visible");
-    cy.contains("span.tab--light-grey", "Packages").click();
-    cy.get("tr.MuiTableRow-root").should("have.length.above", 1);
-  });
+  // it("Check Packages", () => {
+  //   cy.get("div.main-loader").should("not.be.visible");
+  //   cy.contains("span.tab--light-grey", "Packages").click();
+  //   cy.get("tr.MuiTableRow-root").should("have.length.above", 1);
+  // });
 
   afterEach(() => {
     cy.saveLocalStorageCache();

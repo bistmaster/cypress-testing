@@ -13,7 +13,6 @@ describe("Series Admin Dashboard - Users", () => {
   });
 
   it("Click on the navigation link", () => {
-    cy.get("#preloader-jpmcc").should("not.be.visible");
     cy.verifyNameAndUrl("Users", "/users");
     cy.contains("h1", "Users");
   });
