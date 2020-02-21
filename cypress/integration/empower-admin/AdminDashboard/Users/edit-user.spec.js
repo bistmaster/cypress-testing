@@ -13,7 +13,7 @@ const user = {
   }
 };
 
-describe("Series Admin Dashboard - Users", () => {
+describe("Series Admin Dashboard > Users > Edit User", () => {
   before(() => {
     cy.login("erodelo@sweatworks.net", "Asd123...");
   });

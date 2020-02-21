@@ -27,6 +27,7 @@ describe("/login", () => {
   });
 
   it("login with correct credentials", () => {
-    cy.login("testing.feb@yopmail.com", "Sweatworks!1");
+    const { captain_user } = Cypress.env();
+    cy.login(captain_user.email, captain_user.password);
   });
 });

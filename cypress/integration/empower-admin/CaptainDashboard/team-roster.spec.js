@@ -1,12 +1,13 @@
-describe("Captain Dashboard - Team Roster", () => {
+describe("Captain Dashboard > Team Roster", () => {
   before(() => {
     // Captain User
-    cy.login("testing.feb@yopmail.com", "Sweatworks!1");
+    const { captain_user } = Cypress.env();
+    cy.login(captain_user.email, captain_user.password);
   });
 
   it("Click on the navigation link", () => {
-    cy.get("#preloader-jpmcc").should("not.be.visible");
     cy.verifyNameAndUrl("Team Roster", "/team-roster");
+    cy.get("div.fullscreen-loader").should("not.be.visible");
   });
 
   after(() => {

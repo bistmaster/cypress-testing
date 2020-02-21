@@ -1,4 +1,4 @@
-describe("Series Admin Dashboard - Hospitality", () => {
+describe("Series Admin Dashboard > Hospitality", () => {
   before(() => {
     // Series Admin User
     cy.login("erodelo@sweatworks.net", "Asd123...");

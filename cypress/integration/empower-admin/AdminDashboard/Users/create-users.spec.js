@@ -3,7 +3,7 @@ const firstName = faker.name.firstName();
 const lastName = faker.name.lastName();
 const email = faker.internet.email();
 
-describe("Series Admin Dashboard - Users", () => {
+describe("Series Admin Dashboard > Users > Add User", () => {
   before(() => {
     cy.login("erodelo@sweatworks.net", "Asd123...");
   });

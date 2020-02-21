@@ -1,3 +1,18 @@
 {
-  "projectId": "ov5ohq"
+  "projectId": "ov5ohq",
+  "env": {
+    "host": "https://dev.jpmcc-sw.com",
+    "api_server": "https://dev.jpmcc-sw.com/dev",
+    "series_admin_user": {
+      "email": "erodelo@sweatworks.net",
+      "password": "Asd123..."
+    },
+    "captain_user": {
+      "email": "testing.feb@yopmail.com",
+      "password": "Sweatworks!1"
+    },
+    "subEventId": "243",
+    "hospitalityCategoryId": "56",
+    "products": ["10", "30", "13"]
+  }
 }
