@@ -13,6 +13,20 @@
     },
     "subEventId": "243",
     "hospitalityCategoryId": "56",
-    "products": ["10", "30", "13"]
+    "products": ["10", "30", "13"],
+    "participantInfo": {
+      "companyRegistrationId": "6",
+      "companyCountry": "Philippines",
+      "companyState": "Northern Mindanao",
+      "careerLevel": "other",
+      "careerFunction": "engineer",
+      "paceMM": "30",
+      "paceSS": "01",
+      "walkerOrRunner": "runner",
+      "disabilityAssistance": "handcrank",
+      "emergencyContactRelation": "Relative",
+      "phone": "123 456 7890",
+      "color": "Azul"
+    }
   }
 }

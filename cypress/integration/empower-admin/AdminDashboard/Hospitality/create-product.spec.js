@@ -2,8 +2,7 @@ const faker = require("faker");
 const productName = faker.commerce.productName();
 describe("Series Admin Dashboard > Hospitality > Add Product", () => {
   before(() => {
-    const { series_admin_user } = Cypress.env();
-    const { email, password } = series_admin_user;
+    const { email, password } = Cypress.env("series_admin_user");
     cy.login(email, password);
   });
 
@@ -17,7 +16,7 @@ describe("Series Admin Dashboard > Hospitality > Add Product", () => {
     cy.contains("span.tab--light-grey", "Products");
     cy.contains("span.tab--light-grey", "Packages");
     cy.contains("a.hospitality__button--medium", "+ Product").click();
-    cy.get("div.main-loader").should("be.visible");
+    cy.get("div.main-loader").should("not.be.visible");
     cy.get("div.MuiDrawer-paper").should("be.visible");
   });
 

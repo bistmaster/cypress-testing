@@ -30,14 +30,28 @@ describe("Series Admin Dashboard > Participants", () => {
 
   it("Add Participants", () => {
     const dateInput = faker.date.past(10, "02/19/2000");
+    const {
+      companyRegistrationId,
+      companyCountry,
+      companyState,
+      careerLevel,
+      careerFunction,
+      paceMM,
+      paceSS,
+      walkerOrRunner,
+      disabilityAssistance,
+      emergencyContactRelation,
+      phone,
+      color
+    } = Cypress.env("participantInfo");
     cy.contains("a", "+ New Participant").click();
     cy.get("div.main-loader").should("not.be.visible");
     cy.get("div.MuiDrawer-paper").should("be.visible");
     cy.contains("p.section-container--label", "Participants Information");
     cy.get("select[name=subEventId]").select("2");
     cy.get("div.main-loader").should("be.visible");
-    cy.get("select[name=companyRegistrationId]").select("6");
-    cy.get("div.main-loader").should("not.be.visible");
+    cy.get("select[name=companyRegistrationId]").select(companyRegistrationId);
+    cy.get("div.main-loader").should("be.visible");
     cy.get("input[name=firstName]").type(firstName);
     cy.get("input[name=lastName]").type(lastName);
     cy.get("input[name=displayName]").type(firstName);
@@ -50,23 +64,25 @@ describe("Series Admin Dashboard > Participants", () => {
     cy.get("input[name=companyAddress]").type(faker.address.streetAddress());
     cy.get("input[name=companyCity]").type(faker.address.city());
     cy.get("input[name=companyZipCode]").type(faker.address.zipCode());
-    cy.get("select[name=companyCountry]").select("Philippines");
-    cy.get("select[name=companyState]").select("Northern Mindanao");
-    cy.get("select[name=careerFunction]").select("engineer");
-    cy.get("select[name=careerLevel]").select("other");
+    cy.get("select[name=companyCountry]").select(companyCountry);
+    cy.get("select[name=companyState]").select(companyState);
+    cy.get("select[name=careerFunction]").select(careerFunction);
+    cy.get("select[name=careerLevel]").select(careerLevel);
     cy.get("select[name=tShirtSize]").select("men_l");
-    cy.get("select[name=paceMM]").select("30");
-    cy.get("select[name=paceSS]").select("01");
-    cy.get("select[name=walkerOrRunner]").select("runner");
-    cy.get("select[name=disabilityAssistance]").select("handcrank");
+    cy.get("select[name=paceMM]").select(paceMM);
+    cy.get("select[name=paceSS]").select(paceSS);
+    cy.get("select[name=walkerOrRunner]").select(walkerOrRunner);
+    cy.get("select[name=disabilityAssistance]").select(disabilityAssistance);
     cy.get("input[name=emergencyContactName]").type(faker.name.findName());
-    cy.get("input[name=emergencyContactRelation]").type("Friend");
+    cy.get("input[name=emergencyContactRelation]").type(
+      emergencyContactRelation
+    );
     cy.get("input[name=emergencyContactEmail]").type(faker.internet.email());
-    cy.get("input[name=emergencyContactPhone]").type("123 456 7890");
+    cy.get("input[name=emergencyContactPhone]").type(phone);
     cy.get("input[name='generatedCustomFields[0].entry[0]']").type(
       faker.lorem.sentence()
     );
-    cy.get("select[name='generatedCustomFields[1].entry[0]']").select("Azul");
+    cy.get("select[name='generatedCustomFields[1].entry[0]']").select(color);
     cy.get("button[type=submit]").click();
     cy.get("div.main-loader").should("be.visible");
   });
