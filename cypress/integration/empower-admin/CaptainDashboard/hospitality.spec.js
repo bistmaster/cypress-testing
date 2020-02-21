@@ -1,7 +1,7 @@
 describe("Captain Dashboard - Hospitality Catalogue", () => {
   before(() => {
     // Captain User
-    cy.login("jdeere@yopmail.com", "Tester123!");
+    cy.login("testing.feb@yopmail.com", "Sweatworks!1");
   });
 
   it("Click on the navigation link", () => {

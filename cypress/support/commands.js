@@ -25,12 +25,15 @@ Cypress.Commands.add("restoreLocalStorageCache", () => {
   });
 });
 
-Cypress.Commands.add("login", (email, password) => {
-  cy.visit("https://dev.jpmcc-sw.com/login");
+Cypress.Commands.add("login", (email, password, url) => {
+  if (!url) {
+    url = "https://dev.jpmcc-sw.com";
+  }
+  cy.visit(`${url}/login`);
   cy.wait(500);
 
   cy.server();
-  cy.route("POST", "https://dev.jpmcc-sw.com/dev/auth/login").as("login");
+  cy.route("POST", `${url}/dev/auth/login`).as("login");
   cy.get("[id=email]").type(email);
   cy.get("[id=password]").type(password);
   cy.get("button[type=submit]").click();
