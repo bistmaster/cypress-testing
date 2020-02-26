@@ -1,5 +1,6 @@
 {
   "projectId": "ov5ohq",
+  "baseUrl": "https://dev.jpmcc-sw.com/",
   "env": {
     "host": "https://dev.jpmcc-sw.com",
     "api_server": "https://dev.jpmcc-sw.com/dev",
@@ -14,8 +15,10 @@
     "subEventId": "243",
     "hospitalityCategoryId": "56",
     "products": ["10", "30", "13"],
+    "phone": "123 456 7890",
     "participantInfo": {
-      "companyRegistrationId": "6",
+      "subEventId": "243",
+      "companyRegistrationId": "203",
       "companyCountry": "Philippines",
       "companyState": "Northern Mindanao",
       "careerLevel": "other",
@@ -27,6 +30,16 @@
       "emergencyContactRelation": "Relative",
       "phone": "123 456 7890",
       "color": "Azul"
+    },
+    "companyInfo": {
+      "teamCaptain": "Remin",
+      "country": "Colombia",
+      "state": "Bolivar",
+      "annualRevenue": "Under $6 Million",
+      "industryCategory": "Education",
+      "whoPays": "Team Captain",
+      "paymentMethod": "Invoice",
+      "customInformation": ["Sample", "Bbbb", "'a'"]
     }
   }
 }

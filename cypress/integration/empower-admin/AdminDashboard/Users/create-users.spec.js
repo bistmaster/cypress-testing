@@ -2,7 +2,7 @@ const faker = require("faker");
 const firstName = faker.name.firstName();
 const lastName = faker.name.lastName();
 const email = faker.internet.email();
-
+const { subEventId } = Cypress.env();
 describe("Series Admin Dashboard > Users > Add User", () => {
   before(() => {
     cy.login("erodelo@sweatworks.net", "Asd123...");
@@ -42,7 +42,7 @@ describe("Series Admin Dashboard > Users > Add User", () => {
     cy.get("input[name=email]").type(email);
     cy.get("div.country-code-select__control").click();
     cy.get("input[name=phone]").type("123 456 7890");
-    cy.get("select[name='subEventsUsers[0].subEventId']").select("170");
+    cy.get("select[name='subEventsUsers[0].subEventId']").select(subEventId);
     cy.get("button[type=submit]").click();
   });
 
@@ -60,7 +60,7 @@ describe("Series Admin Dashboard > Users > Add User", () => {
     cy.get("input[name=email]").type(email);
     cy.get("div.country-code-select__control").click();
     cy.get("input[name=phone]").type(faker.phone.phoneNumberFormat(0));
-    cy.get("select[name='subEventsUsers[0].subEventId']").select("170");
+    cy.get("select[name='subEventsUsers[0].subEventId']").select(subEventId);
     cy.get("button[type=submit]").click();
     cy.contains("p", "User already exists.");
     cy.get("div.user_form__right_panel_close").click();

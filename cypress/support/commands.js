@@ -57,3 +57,16 @@ Cypress.Commands.add("verifyNameAndUrl", (name, url) => {
   cy.contains("span", name).click();
   cy.url().should("include", url);
 });
+
+Cypress.Commands.add("phoneSelect", (selector, value) => {
+  cy.get(selector).click();
+  cy.get("div.country-code-select__menu").should("be.visible");
+  cy.contains("div.country-code-select__option", value).click();
+});
+
+Cypress.Commands.add("search", (rowContainer, searchCriteria) => {
+  cy.get("div.main-loader").should("be.visible");
+  cy.get("input[id=header-search-input]").clear();
+  cy.get("input[id=header-search-input]").type(searchCriteria);
+  cy.get(rowContainer).should("have.length.above", 0);
+});

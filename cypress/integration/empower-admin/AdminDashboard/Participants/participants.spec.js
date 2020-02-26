@@ -31,6 +31,7 @@ describe("Series Admin Dashboard > Participants", () => {
   it("Add Participants", () => {
     const dateInput = faker.date.past(10, "02/19/2000");
     const {
+      subEventId,
       companyRegistrationId,
       companyCountry,
       companyState,
@@ -48,7 +49,7 @@ describe("Series Admin Dashboard > Participants", () => {
     cy.get("div.main-loader").should("not.be.visible");
     cy.get("div.MuiDrawer-paper").should("be.visible");
     cy.contains("p.section-container--label", "Participants Information");
-    cy.get("select[name=subEventId]").select("2");
+    cy.get("select[name=subEventId]").select(subEventId);
     cy.get("div.main-loader").should("be.visible");
     cy.get("select[name=companyRegistrationId]").select(companyRegistrationId);
     cy.get("div.main-loader").should("be.visible");
@@ -79,16 +80,12 @@ describe("Series Admin Dashboard > Participants", () => {
     );
     cy.get("input[name=emergencyContactEmail]").type(faker.internet.email());
     cy.get("input[name=emergencyContactPhone]").type(phone);
-    cy.get("input[name='generatedCustomFields[0].entry[0]']").type(
-      faker.lorem.sentence()
-    );
-    cy.get("select[name='generatedCustomFields[1].entry[0]']").select(color);
     cy.get("button[type=submit]").click();
     cy.get("div.main-loader").should("be.visible");
   });
 
   it("Search new participant", () => {
-    cy.get("div.main-loader").should("not.be.visible");
+    cy.get("div.main-loader").should("be.visible");
     cy.get("input[id=header-search-input]").clear();
     cy.get("input[id=header-search-input]").type(firstName);
     cy.get("div.event-row-wrapper").should("have.length.above", 0);
