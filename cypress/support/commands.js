@@ -27,9 +27,9 @@ Cypress.Commands.add("restoreLocalStorageCache", () => {
 
 Cypress.Commands.add("login", (email, password, url) => {
   if (!url) {
-    url = "https://dev.jpmcc-sw.com";
+    url = Cypress.config().baseUrl;
   }
-  cy.visit(`${url}/login`);
+  cy.visit(`${url}login`);
   cy.wait(500);
 
   cy.server();
@@ -66,7 +66,7 @@ Cypress.Commands.add("phoneSelect", (selector, value) => {
 
 Cypress.Commands.add("search", (rowContainer, searchCriteria) => {
   cy.get("div.main-loader").should("be.visible");
-  cy.get("input[id=header-search-input]").clear();
+  cy.get("input[id=header-search-input]").clear({ force: true });
   cy.get("input[id=header-search-input]").type(searchCriteria);
   cy.get(rowContainer).should("have.length.above", 0);
 });

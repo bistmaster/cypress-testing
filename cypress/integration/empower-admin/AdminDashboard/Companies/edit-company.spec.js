@@ -11,23 +11,8 @@ describe("Series Admin Dashboard - Companies", () => {
     cy.restoreLocalStorageCache();
   });
 
-  it("Navigation", () => {
-    cy.get("#preloader-jpmcc").should("not.be.visible");
-    cy.verifyNameAndUrl("Companies", "/companies");
-    cy.contains("h1", "Companies");
-  });
-
-  it("List Companies", () => {
-    cy.get("div.main-loader").should("not.be.visible");
-    cy.get("div.event-item-container").should("have.length.above", 1);
-  });
-
-  it("Pagination", () => {
-    cy.get("ul.pagination").should("be.visible");
-    cy.get("li.page-item").should("have.length.above", 1);
-  });
-
   it("Adding Company", () => {
+    cy.verifyNameAndUrl("Companies", "/companies");
     cy.contains("a", "+ New Company").click();
     cy.get("input[name='company.name']").type(companyName);
     cy.get("select[name='companyRegistration.subEventId']").select(subEventId);
@@ -75,7 +60,7 @@ describe("Series Admin Dashboard - Companies", () => {
       companyInfo.industryCategory
     );
     cy.get("input[name='companyRegistration.estimatedNumMembers']").type(
-      faker.random.number({ min: 50, max: 100 })
+      faker.random.number({ min: 4, max: 6 })
     );
     cy.get("input[name='companyRegistration.customPrice']").type(
       faker.commerce.price()
@@ -100,25 +85,26 @@ describe("Series Admin Dashboard - Companies", () => {
       ".radio_button > .inline_radio > :nth-child(3) > .checkmark"
     ).click();
 
-    cy.server();
-    cy.route("POST", `/dev/companies`, {}).as("createCompany");
     cy.get("button[type=submit]").click();
-    cy.wait("@createCompany");
-    cy.get("@createCompany").then(response => {
-      cy.get("div.main-loader").should("not.be.visible");
-      cy.get("div.MuiDrawer-paper").should("be.visible");
+    cy.server();
+    cy.route("POST", `${Cypress.config().baseUrl}/dev/companyRegistrations`).as(
+      "companyRegistrations"
+    );
+    cy.get("button[type=submit]").click();
+    cy.wait("@companyRegistrations");
+    cy.get("@companyRegistrations").then(response => {
+      expect(response.status).to.eq(200);
+      cy.get("div.MuiDrawer-paper").should("not.be.visible");
     });
   });
 
-  // it("Search Company", () => {
-  //   cy.search("div.event-item-container", companyName);
-  // });
+  it("Search Company", () => {
+    cy.search("div.event-item-container", companyName);
+  });
+
+  it("Edit Company", () => {});
 
   afterEach(() => {
     cy.saveLocalStorageCache();
-  });
-
-  after(() => {
-    // cy.logout();
   });
 });

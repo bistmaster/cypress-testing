@@ -46,7 +46,7 @@ describe("Series Admin Dashboard > Hospitality > Add Package", () => {
     cy.get("div.main-loader").should("be.visible");
   });
 
-  it("Search Pacakage Created", () => {
+  it("Search Package Created", () => {
     cy.get("input[id=header-search-input]").clear();
     cy.get("input[id=header-search-input]").type(packageName);
     cy.get("tr.MuiTableRow-root").should("have.length.above", 0);
