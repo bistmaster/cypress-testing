@@ -44,6 +44,16 @@
     "companyInfoEdit": {
       "companyNameToEdit": "Hartmann and Sons",
       "companyNameNew": "Nestle"
+    },
+    "hospitality": {
+      "product": {
+        "nameToEdit": "Handcrafted Plastic Pants",
+        "nameNew": "Band Aid"
+      },
+      "package": {
+        "nameToEdit": "Rustic",
+        "nameNew": "Couple Package"
+      }
     }
   }
 }

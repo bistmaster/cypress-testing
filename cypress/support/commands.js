@@ -70,3 +70,16 @@ Cypress.Commands.add("search", (rowContainer, searchCriteria) => {
   cy.get("input[id=header-search-input]").type(searchCriteria);
   cy.get(rowContainer).should("have.length.above", 0);
 });
+
+Cypress.Commands.add("waitRequest", (url, button, nameRequest) => {
+  cy.server();
+  cy.route("GET", `${Cypress.config().baseUrl}/dev/${url}`).as(nameRequest);
+  cy.get(button)
+    .first()
+    .click({ force: true });
+  cy.wait(`@${nameRequest}`);
+  cy.get(`@${nameRequest}`).then(response => {
+    expect(response.status).to.eq(200);
+    cy.get("div.MuiDrawer-paper").should("be.visible");
+  });
+});
