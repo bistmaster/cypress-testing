@@ -40,6 +40,10 @@
       "whoPays": "Team Captain",
       "paymentMethod": "Invoice",
       "customInformation": ["Sample", "Bbbb", "'a'"]
+    },
+    "companyInfoEdit": {
+      "companyNameToEdit": "Hartmann and Sons",
+      "companyNameNew": "Nestle"
     }
   }
 }
