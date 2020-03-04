@@ -1,7 +1,8 @@
-describe("Series Admin Dashboard - Events", () => {
+describe("Series Admin Dashboard > Events > Edit", () => {
   before(() => {
     // Series Admin User
-    cy.login("erodelo@sweatworks.net", "Asd123...");
+    const { email, password } = Cypress.env("series_admin_user");
+    cy.login(email, password);
   });
 
   it("Click on the navigation link", () => {

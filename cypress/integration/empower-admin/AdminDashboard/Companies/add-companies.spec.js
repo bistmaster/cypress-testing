@@ -4,7 +4,8 @@ const companyName = faker.company.companyName(0);
 describe("Series Admin Dashboard - Companies", () => {
   before(() => {
     // Series Admin User
-    cy.login("erodelo@sweatworks.net", "Asd123...");
+    const { email, password } = Cypress.env("series_admin_user");
+    cy.login(email, password);
   });
 
   beforeEach(() => {

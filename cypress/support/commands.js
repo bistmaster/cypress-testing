@@ -85,6 +85,24 @@ Cypress.Commands.add("editText", (container, value) => {
   cy.get(container).type(value);
 });
 
+Cypress.Commands.add("verifyPagination", () => {
+  cy.get("ul.pagination").should("be.visible");
+  cy.get("li.page-item").should("have.length.above", 1);
+});
+
+Cypress.Commands.add("confirm", isSave => {
+  cy.get("div.form-drawer__close").click();
+  cy.get("div[aria-labelledby='alert-dialog-title']").should("be.visible");
+  if (isSave) {
+    cy.contains("button.event-modal-green-button", "Save").click();
+  } else {
+    cy.contains(
+      "div.event-modal-secondary-text",
+      "Continue without saving"
+    ).click();
+  }
+});
+
 Cypress.Commands.add("waitRequest", (url, button, nameRequest) => {
   cy.server();
   cy.route("GET", `${Cypress.config().baseUrl}/dev/${url}`).as(nameRequest);

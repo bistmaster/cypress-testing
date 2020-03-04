@@ -56,6 +56,16 @@
         "nameNew": "Rustic",
         "productsToAdd": ["33"]
       }
+    },
+    "event": {
+      "add": {
+        "name": "Event Today",
+        "city": "Chicago"
+      },
+      "edit": {
+        "name": "Event Next Day",
+        "city": "Chicago"
+      }
     }
   }
 }
