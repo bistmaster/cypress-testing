@@ -3,29 +3,15 @@ const firstName = faker.name.firstName();
 const lastName = faker.name.lastName();
 const email = faker.internet.email();
 
-describe("Series Admin Dashboard > Participants", () => {
+describe("Series Admin Dashboard > Participants > Add", () => {
   before(() => {
     // Series Admin User
-    cy.login("erodelo@sweatworks.net", "Asd123...");
+    const { email, password } = Cypress.env("series_admin_user");
+    cy.login(email, password);
   });
 
   beforeEach(() => {
     cy.restoreLocalStorageCache();
-  });
-
-  it("Click on the navigation link", () => {
-    cy.get("div.main-loader").should("not.be.visible");
-    cy.verifyNameAndUrl("Participants", "/participants");
-  });
-
-  it("Check Participants lists", () => {
-    cy.get("div.main-loader").should("not.be.visible");
-    cy.get("div.event-row-wrapper").should("have.length.above", 1);
-  });
-
-  it("Check on the Participants Pagination", () => {
-    cy.get("ul.pagination").should("be.visible");
-    cy.get("li.page-item").should("have.length.above", 1);
   });
 
   it("Add Participants", () => {
@@ -45,7 +31,11 @@ describe("Series Admin Dashboard > Participants", () => {
       phone,
       color
     } = Cypress.env("participantInfo");
+
+    cy.get("div.main-loader").should("not.be.visible");
+    cy.verifyNameAndUrl("Participants", "/participants");
     cy.contains("a", "+ New Participant").click();
+
     cy.get("div.main-loader").should("not.be.visible");
     cy.get("div.MuiDrawer-paper").should("be.visible");
     cy.contains("p.section-container--label", "Participants Information");

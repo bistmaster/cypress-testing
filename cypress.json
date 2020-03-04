@@ -29,7 +29,8 @@
       "disabilityAssistance": "handcrank",
       "emergencyContactRelation": "Relative",
       "phone": "123 456 7890",
-      "color": "Azul"
+      "color": "Azul",
+      "nameToEdit": "Geovanni"
     },
     "companyInfo": {
       "teamCaptain": "Remin",
@@ -51,8 +52,9 @@
         "nameNew": "Band Aid"
       },
       "package": {
-        "nameToEdit": "Rustic",
-        "nameNew": "Couple Package"
+        "nameToEdit": "rustic",
+        "nameNew": "Rustic",
+        "productsToAdd": ["33"]
       }
     }
   }

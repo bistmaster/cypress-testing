@@ -65,10 +65,24 @@ Cypress.Commands.add("phoneSelect", (selector, value) => {
 });
 
 Cypress.Commands.add("search", (rowContainer, searchCriteria) => {
-  cy.get("div.main-loader").should("be.visible");
+  cy.get(rowContainer).then($rows => {
+    if ($rows.length < 0) {
+      cy.get("div.main-loader").should("be.visible");
+    }
+  });
   cy.get("input[id=header-search-input]").clear({ force: true });
   cy.get("input[id=header-search-input]").type(searchCriteria);
   cy.get(rowContainer).should("have.length.above", 0);
+});
+
+Cypress.Commands.add("countRows", (rowContainer, count) => {
+  cy.get("div.main-loader").should("be.visible");
+  cy.get(rowContainer).should("have.length.above", count);
+});
+
+Cypress.Commands.add("editText", (container, value) => {
+  cy.get(container).clear();
+  cy.get(container).type(value);
 });
 
 Cypress.Commands.add("waitRequest", (url, button, nameRequest) => {

@@ -43,7 +43,7 @@ describe("Series Admin Dashboard > Hospitality > Add Package", () => {
     cy.get("input[name=tax]").type(faker.random.number({ min: 1, max: 10 }));
 
     cy.get("button[type=submit]").click();
-    cy.get("div.main-loader").should("be.visible");
+    cy.get("div.MuiDrawer-paper").should("not.be.visible");
   });
 
   it("Search Package Created", () => {
