@@ -15,32 +15,17 @@ const user = {
 
 describe("Series Admin Dashboard > Users > Edit User", () => {
   before(() => {
-    cy.login("erodelo@sweatworks.net", "Asd123...");
+    const { email, password } = Cypress.env("series_admin_user");
+    cy.login(email, password);
   });
 
   beforeEach(() => {
     cy.restoreLocalStorageCache();
   });
 
-  it("Click on the navigation link", () => {
-    cy.get("#preloader-jpmcc").should("not.be.visible");
+  it("Create New User", () => {
     cy.verifyNameAndUrl("Users", "/users");
     cy.contains("h1", "Users");
-  });
-
-  it("Check on the Users table headers", () => {
-    cy.contains("span.item-text", "ROLE");
-    cy.contains("span.item-text", "NAME");
-    cy.contains("span.item-text", "EVENT NAME");
-    cy.contains("span.item-text", "STATUS");
-    cy.contains("span.item-text", "ACTIONS");
-  });
-
-  it("Check on the Users table rows", () => {
-    cy.get("div.users-list__row-wrapper").should("have.length.above", 1);
-  });
-
-  it("Create New User", () => {
     cy.contains("a", "+ New User").click();
     cy.get("div.MuiDrawer-paper").should("be.visible");
     cy.get("select[name=permission]").select("TC");

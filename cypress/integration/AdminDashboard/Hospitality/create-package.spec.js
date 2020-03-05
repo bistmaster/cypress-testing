@@ -29,7 +29,6 @@ describe("Series Admin Dashboard > Hospitality > Add Package", () => {
     cy.get("textarea[name=description]").type(faker.lorem.sentence());
 
     for (let x = 0; x < products.length; x++) {
-      console.log(products[x]);
       cy.get("div.pack-products__form select[name=productName]").select(
         products[x]
       );
