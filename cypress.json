@@ -63,8 +63,9 @@
         "city": "Chicago"
       },
       "edit": {
-        "name": "Event Next Day",
-        "city": "Chicago"
+        "name": "Event Today - 3/26/2020",
+        "nameNew": "Event Today - 3/26/2020 - Edited",
+        "city": "New York"
       }
     }
   }

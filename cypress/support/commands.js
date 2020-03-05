@@ -115,3 +115,12 @@ Cypress.Commands.add("waitRequest", (url, button, nameRequest) => {
     cy.get("div.MuiDrawer-paper").should("be.visible");
   });
 });
+
+Cypress.Commands.add("waitOnSave", (url, method, nameRequest) => {
+  cy.server();
+  cy.route(method, `${Cypress.config().baseUrl}/dev/${url}`).as(nameRequest);
+  cy.wait(`@${nameRequest}`);
+  cy.get(`@${nameRequest}`).then(response => {
+    expect(response.status).to.eq(200);
+  });
+});

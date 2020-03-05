@@ -1,6 +1,6 @@
 const faker = require("faker");
 const dateInput = faker.date.between("2020-03-03", "2020-12-31");
-const { add, edit } = Cypress.env("event");
+const { add } = Cypress.env("event");
 
 describe("Series Admin Dashboard > Events > Add", () => {
   before(() => {
@@ -61,7 +61,6 @@ describe("Series Admin Dashboard > Events > Add", () => {
       cy.contains("button[type=submit]", "Save").click();
     });
 
-    cy.get("div.main-loader").should("be.visible");
     cy.get("div.MuiDrawer-paper").should("not.be.visible");
     cy.get("div.main-loader").should("be.visible");
     cy.wait(500);
