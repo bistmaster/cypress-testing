@@ -33,7 +33,7 @@ Cypress.Commands.add("login", (email, password, url) => {
   cy.wait(500);
 
   cy.server();
-  cy.route("POST", `${url}/dev/auth/login`).as("login");
+  cy.route("POST", `${url}/qa/auth/login`).as("login");
   cy.get("[id=email]").type(email);
   cy.get("[id=password]").type(password);
   cy.get("button[type=submit]").click();

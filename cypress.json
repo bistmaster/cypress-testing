@@ -1,9 +1,9 @@
 {
   "projectId": "ov5ohq",
-  "baseUrl": "https://dev.jpmcc-sw.com/",
+  "baseUrl": "https://qa.jpmcc-sw.com/",
   "env": {
-    "host": "https://dev.jpmcc-sw.com",
-    "api_server": "https://dev.jpmcc-sw.com/dev",
+    "host": "https://qa.jpmcc-sw.com",
+    "api_server": "https://qa.jpmcc-sw.com/dev",
     "series_admin_user": {
       "email": "erodelo@sweatworks.net",
       "password": "Asd123..."
@@ -66,6 +66,16 @@
         "name": "Event Today - 3/26/2020",
         "nameNew": "Event Today - 3/26/2020 - Edited",
         "city": "New York"
+      }
+    },
+    "sorting": {
+      "packages": {
+        "first": "10x10",
+        "second": "Zebra"
+      },
+      "products": {
+        "first": "baD",
+        "second": "Tents"
       }
     }
   }
