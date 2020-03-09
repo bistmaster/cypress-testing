@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/cypress open",
-    "cy:run:chrome": "cypress run --browser chrome",
-    "cy:run:firefox": "cypress run --browser firefox"
+    "cy:run:chrome:dev": "node_modules/.bin/cypress run --browser chrome --config-file config/dev.cypress.json --headless",
+    "cy:run:chrome:qa": "node_modules/.bin/cypress run --browser chrome --config-file config/qa.cypress.json",
+    "cy:run:chrome:prod": "node_modules/.bin/cypress run --browser chrome --config-file config/prod.cypress.json",
+    "cy:run:firefox:dev": "node_modules/.bin/cypress run --browser firefox --config-file config/dev.cypress.json",
+    "cy:run:firefox:qa": "node_modules/.bin/cypress run --browser firefox --config-file config/qa.cypress.json",
+    "cy:run:firefox:prod": "node_modules/.bin/cypress run --browser firefox ----config-file config/prod.cypress.json"
   },
   "repository": {
     "type": "git",

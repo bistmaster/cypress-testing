@@ -3,7 +3,6 @@ const { subEventId, companyInfo, phone } = Cypress.env();
 const companyName = faker.company.companyName(0);
 describe("Series Admin Dashboard - Companies", () => {
   before(() => {
-    // Series Admin User
     const { email, password } = Cypress.env("series_admin_user");
     cy.login(email, password);
   });

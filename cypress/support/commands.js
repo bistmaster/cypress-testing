@@ -25,15 +25,12 @@ Cypress.Commands.add("restoreLocalStorageCache", () => {
   });
 });
 
-Cypress.Commands.add("login", (email, password, url) => {
-  if (!url) {
-    url = Cypress.config().baseUrl;
-  }
-  cy.visit(`${url}login`);
+Cypress.Commands.add("login", (email, password) => {
+  const { api_server } = Cypress.env();
+  cy.visit("/login");
   cy.wait(500);
-
   cy.server();
-  cy.route("POST", `${url}/qa/auth/login`).as("login");
+  cy.route("POST", `${api_server}/auth/login`).as("login");
   cy.get("[id=email]").type(email);
   cy.get("[id=password]").type(password);
   cy.get("button[type=submit]").click();
@@ -104,8 +101,10 @@ Cypress.Commands.add("confirm", isSave => {
 });
 
 Cypress.Commands.add("waitRequest", (url, button, nameRequest) => {
+  const { apiServer } = Cypress.env();
+
   cy.server();
-  cy.route("GET", `${Cypress.config().baseUrl}/dev/${url}`).as(nameRequest);
+  cy.route("GET", `${apiServer}/${url}`).as(nameRequest);
   cy.get(button)
     .first()
     .click({ force: true });
